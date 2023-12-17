@@ -3,6 +3,6 @@
   <li *ngFor="let character of characterList; let i = index" class="list-group-item">
     {{ i + 1 }}. {{character.name}} - {{ character.power }}
     <button class="btn btn-warning">Editar</button>
-    <button (click)="onDeleteCharacter(i)" class="btn btn-danger">Eliminar</button>
+    <button (click)="onDeleteCharacter(character.id)" class="btn btn-danger">Eliminar</button>
   </li>
 </ul>

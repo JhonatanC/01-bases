@@ -1,38 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
+import { DbzModulebzService } from '../services/dbz.service';
 
 @Component({
   selector: 'app-dbz-main-page',
   templateUrl: './main-page.component.html'
 })
 
-export class MainPageComponent implements OnInit {
+export class MainPageComponent {
 
-  public characters: Character[] = [
-    {
-      name: 'Krillin',
-      power: 1000
-    },
-    {
-      name: 'Gokú',
-      power: 9500
-    },
-    {
-      name: 'Vegeta',
-      power: 7500
-    }
-  ];
+  constructor( private _dbz: DbzModulebzService  ){}
 
-  constructor() { }
-
-  ngOnInit() { }
-
-  onNewCharacter(character: Character): void {
-    this.characters.push(character);
+  get characters(): Character[] {
+    return [...this._dbz.characters];
   }
 
-  onDeleteCharacter(index: number){
-    this.characters.splice(index);
+  onDeleteCharacter(id: string): void {
+    this._dbz.deleteCharacterById(id)
+  }
+
+  onNewCharacter( character: Character ): void {
+    this._dbz.addCharacter(character);
   }
 
 

@@ -17,6 +17,7 @@ export class FormComponent {
   @Output() public onNewCharacter: EventEmitter<Character> = new EventEmitter();
 
   public character: Character = {
+    id: '',
     name: '',
     power: 0
   }

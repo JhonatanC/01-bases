@@ -9,13 +9,12 @@ import { Character } from '../../interfaces/character.interface';
 export class ListComponent {
 
   @Input() public characterList: Character[] = [];
-  @Output() public deleteEmiter: EventEmitter<number> = new EventEmitter();
+  @Output() public onDelete: EventEmitter<string> = new EventEmitter();
 
-  onDelete(index: number) {
+  // onDelete(index: number) {}
 
-  }
-
-  onDeleteCharacter(index: number): void{
-    this.deleteEmiter.emit(index)
+  onDeleteCharacter(id: string): void{
+    // console.log(id);    
+    this.onDelete.emit(id)
   }
 }
